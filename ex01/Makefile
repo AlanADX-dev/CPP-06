@@ -1,6 +1,6 @@
-SRCS = ScalarConverter.cpp main.cpp
+SRCS = Serializer.cpp main.cpp
 
-NAME = ex00
+NAME = ex01
 
 CFLAG = -Wall -Wextra -Werror -std=c++98
 OBJS = $(SRCS:.cpp=.o)
