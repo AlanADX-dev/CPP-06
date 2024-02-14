@@ -2,6 +2,7 @@
 
 Serializer&		Serializer::operator=(const Serializer& copy)
 {
+	(void)copy;
 	return (*this);
 }
 

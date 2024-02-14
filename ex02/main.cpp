@@ -16,7 +16,7 @@ Base*		generate(void)
 	else if (randNum == 3)
 		return new C;
 	else
-		return nullptr;
+		return NULL;
 
 }
 void		identify(Base* p)
@@ -28,15 +28,41 @@ void		identify(Base* p)
 	else if (dynamic_cast<C*>(p) != NULL)
 		std::cout << "C" << std::endl;
 }
-void		identify(Base& p)
+
+void identify(Base& p)
 {
-	if (dynamic_cast<A*>(&p) != NULL)
+	try
+	{
+		dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B*>(&p) != NULL)
+		return ;
+	}
+	catch(const std::exception& e)
+	{}
+
+	try
+	{
+		dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
-	else if (dynamic_cast<C*>(&p) != NULL)
+		return ;
+	}
+	catch(const std::exception& e)
+	{}
+
+	try
+	{
+		dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
+		return ;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "Unknown type" << std::endl;
+	}
+
 }
+
+
 int			main()
 {
 	Base*  basePtr = generate();

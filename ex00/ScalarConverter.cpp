@@ -1,5 +1,29 @@
 #include "ScalarConverter.hpp"
 
+int my_stoi(const std::string& str)
+{
+	int result;
+	std::istringstream iss(str);
+	iss >> result;
+	return result;
+}
+
+float my_stof(const std::string& str)
+{
+	float result;
+	std::istringstream iss(str);
+	iss >> result;
+	return result;
+}
+
+double my_stod(const std::string& str)
+{
+	double result;
+	std::istringstream iss(str);
+	iss >> result;
+	return result;
+}
+
 const char	*ScalarConverter::InvalidOutput::what(void) const throw()
 {
 	return ("ERROR: Invalid input\n");
@@ -60,26 +84,26 @@ void	ScalarConverter::isChar(const std::string input, char *c, int *i, float *f,
 
 void	ScalarConverter::isInt(const std::string input, char *c, int *i, float *f, double *d)
 {
-	*c = static_cast<char>(std::stoi(input));
-	*i = static_cast<int>(std::stoi(input));
-	*f = static_cast<float>(std::stoi(input));
-	*d = static_cast<double>(std::stoi(input));
+	*c = static_cast<char>(my_stoi(input));
+	*i = static_cast<int>(my_stoi(input));
+	*f = static_cast<float>(my_stoi(input));
+	*d = static_cast<double>(my_stoi(input));
 }
 
 void	ScalarConverter::isFloat(const std::string input, char *c, int *i, float *f, double *d)
 {
-	*c = static_cast<char>(std::stof(input));
-	*i = static_cast<int>(std::stof(input));
-	*f = static_cast<float>(std::stof(input));
-	*d = static_cast<double>(std::stof(input));
+	*c = static_cast<char>(my_stof(input));
+	*i = static_cast<int>(my_stof(input));
+	*f = static_cast<float>(my_stof(input));
+	*d = static_cast<double>(my_stof(input));
 }
 
 void	ScalarConverter::isDouble(const std::string input, char *c, int *i, float *f, double *d)
 {
-	*c = static_cast<char>(std::stod(input));
-	*i = static_cast<int>(std::stod(input));
-	*f = static_cast<float>(std::stod(input));
-	*d = static_cast<double>(std::stod(input));
+	*c = static_cast<char>(my_stod(input));
+	*i = static_cast<int>(my_stod(input));
+	*f = static_cast<float>(my_stod(input));
+	*d = static_cast<double>(my_stod(input));
 }
 
 std::string	ScalarConverter::getType(const std::string input)
@@ -104,6 +128,7 @@ std::string	ScalarConverter::getType(const std::string input)
 
 ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &src)
 {
+	(void)src;
 	std::cout << "ScalarConvertor assignement operator called" << std::endl;
 	return (*this);
 }

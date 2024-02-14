@@ -10,7 +10,6 @@ int		main()
 
 	Data* deserialized = Serializer::deserialize(serialized);
 
-	// Check if the deserialized pointer is equal to the original pointer
 	if (deserialized == &dataObj)
 	{
 		std::cout << "Serialization and deserialization successful!" << std::endl;
